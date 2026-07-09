@@ -1,27 +1,31 @@
 [
  {
-  "page": "https://tracto.com/en/products/grundodrill-jcs130e",
-  "error": "500 Server Error: Internal Server Error for url: https://tracto.com/en/products/grundodrill-jcs130e"
+  "page": "https://grundodrill.com/firstedition/",
+  "error": "HTTPSConnectionPool(host='grundodrill.com', port=443): Max retries exceeded with url: /firstedition/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='grundodrill.com', port=443) at 0x7f1c6321c800>, 'Connection to grundodrill.com timed out. (connect timeout=40)'))"
  },
  {
-  "dest": "assets/img/machines/tracto-jcs130e.jpg",
-  "status": "ok",
-  "source": "https://www.trenchless-australasia.com/wp-content/uploads/2026/03/TRACTO_GRUNDODRILL-JCS130E_Maasland_06.jpg",
-  "size": "1200x1600"
+  "page": "https://insider.tracto.com/en/Edition-1/GRUNDODRILL-LIMITED-JCS-ACS-130-FIRST-EDITION",
+  "error": "HTTPSConnectionPool(host='insider.tracto.com', port=443): Max retries exceeded with url: /en/Edition-1/GRUNDODRILL-LIMITED-JCS-ACS-130-FIRST-EDITION (Caused by ConnectTimeoutError(<HTTPSConnection(host='insider.tracto.com', port=443) at 0x7f1c6321e6c0>, 'Connection to insider.tracto.com timed out. (connect timeout=40)'))"
  },
  {
   "dest": "assets/img/machines/tracto-jcs130.jpg",
-  "status": "echec",
-  "essais": 0
+  "status": "ok",
+  "source": "https://utilitymagazine.com.au/wp-content/uploads/2021/01/FirstEdition_Still_Perspektive_2.jpg",
+  "size": "720x405"
  },
  {
   "dest": "assets/img/machines/tracto-acs130.jpg",
-  "status": "echec",
-  "essais": 0
+  "status": "ok",
+  "source": "https://www.trenchless-works.com/wp-content/uploads/2025/11/TRACTO_GRUNDODRILL-20ACS_TiefCon_02-DPS-SPREAD-USE-THIS-scaled.jpg",
+  "size": "1680x1260"
  },
  {
-  "page": "https://tracto.com/en/products/grundopit-ks50",
-  "error": "500 Server Error: Internal Server Error for url: https://tracto.com/en/products/grundopit-ks50"
+  "page": "https://tracto.com/uk/products/grundopit-ks50",
+  "error": "500 Server Error: Internal Server Error for url: https://tracto.com/uk/products/grundopit-ks50"
+ },
+ {
+  "page": "https://www.tttechnologies.com/products/keyhole-drilling/grundopit/",
+  "error": "404 Client Error: Not Found for url: https://www.tttechnologies.com/products/keyhole-drilling/grundopit/"
  },
  {
   "dest": "assets/img/machines/tracto-grundopit-ks50.jpg",
@@ -30,8 +34,17 @@
  },
  {
   "dest": "assets/img/machines/tracto-grundomat.jpg",
-  "status": "echec",
-  "essais": 0
+  "status": "ok",
+  "source": "https://tractotechnik.com.au/wp-content/uploads/2020/11/GRUNDOMAT-1_EN.png",
+  "size": "1000x922"
+ },
+ {
+  "page": "https://www.tttechnologies.com/products/pipe-bursting/grundoburst/",
+  "error": "404 Client Error: Not Found for url: https://www.tttechnologies.com/products/pipe-bursting/grundoburst/"
+ },
+ {
+  "page": "https://tractotechnik.com.au/grundoburst/",
+  "error": "404 Client Error: Not Found for url: https://tractotechnik.com.au/grundoburst/"
  },
  {
   "dest": "assets/img/machines/tracto-grundoburst-800g.jpg",
@@ -41,171 +54,105 @@
  {
   "dest": "assets/img/machines/vermeer-d10x15.jpg",
   "status": "ok",
-  "source": "https://www.vermeer-benelux.com/app/uploads/2022/11/vrijstaand-product.png",
-  "size": "1202x674"
- },
- {
-  "dest": "assets/img/machines/vermeer-d20x22.jpg",
-  "status": "ok",
-  "source": "https://www.vermeer-benelux.com/app/uploads/2023/01/d20x22-s3-cob.png",
+  "source": "https://www.vermeer.com/getmedia/71a775e9-40a3-4e78-b574-e1693c20bb75/d10x15-s3-utility-directional-drill-cob.png?width=670&amp;height=450&amp;ext=.png",
   "size": "670x450"
  },
  {
   "dest": "assets/img/machines/vermeer-d23x30.jpg",
   "status": "ok",
-  "source": "https://www.vermeer-benelux.com/app/uploads/2022/11/vrijstaand-product.png",
-  "size": "1202x674"
+  "source": "https://www.vermeer-benelux.com/app/uploads/2023/01/d23x30dr-s3-drill-in-cab-1920x1080.jpg",
+  "size": "1680x945"
  },
  {
   "dest": "assets/img/machines/vermeer-d24x40.jpg",
   "status": "ok",
-  "source": "https://www.vermeer-benelux.com/app/uploads/2022/11/vrijstaand-product.png",
-  "size": "1202x674"
+  "source": "https://www.vermeer.com/getmedia/a24e3c96-3727-437a-9209-a82e0027540a/d24x40-s3-utility-directional-drill-cob.png?width=670&amp;height=450&amp;ext=.png",
+  "size": "670x450"
  },
  {
-  "dest": "assets/img/machines/jcb-19c1e.jpg",
+  "dest": "assets/img/kubota-kx019/00-kubota-kx019-4-2011-02-02-001-5812088961f02-png.jpg",
   "status": "ok",
-  "source": "https://www.jcb.com/globalassets/digizuite/45156-7476347570/Img_1024x576",
-  "size": "1024x576"
+  "source": "https://kbm.kubota-eu.com/constructionmachinery/wp-content/uploads/sites/4/2017/03/kubota_kx019_4_2011_02_02_001_5812088961f02.png",
+  "size": "733x643"
  },
  {
-  "dest": "assets/img/machines/jcb-525-60e.jpg",
+  "dest": "assets/img/kubota-kx019/01-kubota-kx019-4-2013-04-25-img-1042-hdr-58133f2e31f94-1024x68.jpg",
   "status": "ok",
-  "source": "https://www.jcb.com/globalassets/digizuite/45187-7480547605/Img_1024x576",
-  "size": "1024x576"
+  "source": "https://kbm.kubota-eu.com/constructionmachinery/wp-content/uploads/sites/4/2017/03/kubota_kx019_4_2013_04_25_img_1042_hdr_58133f2e31f94-1024x683.jpg",
+  "size": "1024x683"
  },
  {
-  "dest": "assets/img/machines/jcb-htd5e.jpg",
+  "dest": "assets/img/kubota-kx019/02-kubota-kx019-4-2011-02-03-canopy-13-5812082d75325-png.jpg",
   "status": "ok",
-  "source": "https://www.jcb.com/globalassets/digizuite/70903-a_dumpster_htd-5e_2/Img_1024x576",
-  "size": "1024x439"
+  "source": "https://kbm.kubota-eu.com/constructionmachinery/wp-content/uploads/sites/4/2017/03/kubota_kx019_4_2011_02_03_canopy_13_5812082d75325.png",
+  "size": "733x643"
  },
  {
-  "dest": "assets/img/machines/jcb-505-20e.jpg",
+  "dest": "assets/img/kubota-kx019/03-r090-featured-png.jpg",
   "status": "ok",
-  "source": "https://www.jcb.com/globalassets/digizuite/47869-7881550792/Img_1024x576",
-  "size": "1024x576"
+  "source": "https://kbm.kubota-eu.com/constructionmachinery/wp-content/uploads/2026/01/R090_featured.png",
+  "size": "1024x768"
  },
  {
-  "dest": "assets/img/machines/jcb-teletruk-30-19e.jpg",
+  "dest": "assets/img/kubota-kx019/04-kubota-kx019-4-2013-04-25-img-1091-hdr-58133f71765c4-1024x68.jpg",
   "status": "ok",
-  "source": "https://www.jcb.com/globalassets/digizuite/50641-8060352258/Img_1024x576",
-  "size": "1024x576"
+  "source": "https://kbm.kubota-eu.com/constructionmachinery/wp-content/uploads/sites/4/2017/03/kubota_kx019_4_2013_04_25_img_1091_hdr_58133f71765c4-1024x683.jpg",
+  "size": "1024x683"
  },
  {
-  "dest": "assets/img/machines/jcb-403e.jpg",
+  "dest": "assets/img/kubota-kx019/05-r090-featured-768x576-png.jpg",
   "status": "ok",
-  "source": "https://www.jcb.com/globalassets/digizuite/56532-a_wls_403e_2/Img_1024x576",
-  "size": "1024x576"
+  "source": "https://kbm.kubota-eu.com/constructionmachinery/wp-content/uploads/2026/01/R090_featured-768x576.png",
+  "size": "768x576"
  },
  {
-  "dest": "assets/img/machines/kubota-kx019-4.jpg",
+  "dest_dir": "assets/img/kubota-kx019",
+  "recoltees": 6
+ },
+ {
+  "dest": "assets/img/kubota-kx060/00-kuk-kx60-5-reddotv2-png.jpg",
   "status": "ok",
-  "source": "https://ke.kubota-eu.com/constructionmachinery/wp-content/uploads/sites/4/2015/03/KX019_Cabin_7_Final_RET.jpg",
-  "size": "1521x1785"
+  "source": "https://kbm.kubota-eu.com/constructionmachinery/wp-content/uploads/sites/4/2020/08/KUK_KX60-5-reddotV2.png",
+  "size": "1200x900"
  },
  {
-  "dest": "assets/img/machines/kubota-kx019-4e.jpg",
+  "dest": "assets/img/kubota-kx060/01-kubota-kx060-5-dsc0998-603df4374a0f7-jpg.jpg",
   "status": "ok",
-  "source": "https://ke.kubota-eu.com/constructionmachinery/wp-content/uploads/sites/4/2015/03/KX019_Cabin_7_Final_RET.jpg",
-  "size": "1521x1785"
+  "source": "https://kbm.kubota-eu.com/constructionmachinery/wp-content/uploads/sites/4/2020/04/kubota_kx060_5_dsc0998_603df4374a0f7.jpg",
+  "size": "1680x1120"
  },
  {
-  "dest": "assets/img/machines/kubota-u27-4.jpg",
+  "dest": "assets/img/kubota-kx060/02-kubota-kx060-5-img-4003-5eeb2d2c20f22-jpg.jpg",
   "status": "ok",
-  "source": "https://kuk.kubota-eu.com/constructionmachinery/wp-content/uploads/sites/4/2021/04/kubota_u27_4_2014_02_05_dsc1126_5821ecf27a705.png",
-  "size": "863x773"
+  "source": "https://kbm.kubota-eu.com/constructionmachinery/wp-content/uploads/sites/4/2020/04/kubota_kx060_5_img_4003_5eeb2d2c20f22.jpg",
+  "size": "1680x1260"
  },
  {
-  "page": "https://kuk.kubota-eu.com/constructionmachinery/products/kx027-4/",
-  "error": "404 Client Error: Not Found for url: https://kuk.kubota-eu.com/constructionmachinery/products/kx027-4/"
- },
- {
-  "dest": "assets/img/machines/kubota-kx027-4.jpg",
+  "dest": "assets/img/kubota-kx060/03-kx060-5-baustelle-4-5-2020-1003745-5eeb1949684e3-png.jpg",
   "status": "ok",
-  "source": "https://kbm.kubota-eu.com/constructionmachinery/wp-content/uploads/sites/4/2017/06/KBM_KX027_4.png",
-  "size": "926x661"
+  "source": "https://kbm.kubota-eu.com/constructionmachinery/wp-content/uploads/sites/4/2020/04/kx060_5_baustelle_4.5.2020_1003745_5eeb1949684e3.png",
+  "size": "1080x1080"
  },
  {
-  "dest": "assets/img/machines/kubota-kx060-5.jpg",
+  "dest": "assets/img/kubota-kx060/04-kubota-kx060-5-dsc0966-603df42887ea3-jpg.jpg",
   "status": "ok",
-  "source": "https://kuk.kubota-eu.com/constructionmachinery/wp-content/uploads/sites/4/2021/07/KX060-5_IMG_0070-1-scaled-1V2.png",
-  "size": "1019x776"
+  "source": "https://kbm.kubota-eu.com/constructionmachinery/wp-content/uploads/sites/4/2020/04/kubota_kx060_5_dsc0966_603df42887ea3.jpg",
+  "size": "1680x1120"
+ },
+ {
+  "dest": "assets/img/kubota-kx060/05-img-0217-kx060-5-scaled-1-png.jpg",
+  "status": "ok",
+  "source": "https://kbm.kubota-eu.com/constructionmachinery/wp-content/uploads/sites/4/2020/04/IMG_0217_KX060_5-scaled-1.png",
+  "size": "733x643"
+ },
+ {
+  "dest_dir": "assets/img/kubota-kx060",
+  "recoltees": 6
  },
  {
   "dest": "assets/img/chantier-forage.jpg",
   "status": "echec",
-  "essais": 1
- },
- {
-  "page": "https://tracto.com/en/products/grundodrill-jcs130e",
-  "error": "500 Server Error: Internal Server Error for url: https://tracto.com/en/products/grundodrill-jcs130e"
- },
- {
-  "dest": "assets/img/electrique.jpg",
-  "status": "ok",
-  "source": "https://www.trenchless-australasia.com/wp-content/uploads/2026/03/TRACTO_GRUNDODRILL-JCS130E_Maasland_06.jpg",
-  "size": "1200x1600"
- },
- {
-  "dest": "assets/img/stock/pexels-16227453.jpg",
-  "status": "ok",
-  "source": "https://images.pexels.com/photos/16227453/pexels-photo-16227453.jpeg?auto=compress&cs=tinysrgb&w=1920",
-  "size": "1680x1120"
- },
- {
-  "dest": "assets/img/stock/pexels-28100866.jpg",
-  "status": "ok",
-  "source": "https://images.pexels.com/photos/28100866/pexels-photo-28100866.jpeg?auto=compress&cs=tinysrgb&w=1920",
-  "size": "1680x2520"
- },
- {
-  "dest": "assets/img/stock/pexels-34480905.jpg",
-  "status": "ok",
-  "source": "https://images.pexels.com/photos/34480905/pexels-photo-34480905.jpeg?auto=compress&cs=tinysrgb&w=1920",
-  "size": "1680x1120"
- },
- {
-  "dest": "assets/img/stock/pexels-69483.jpg",
-  "status": "ok",
-  "source": "https://images.pexels.com/photos/69483/pexels-photo-69483.jpeg?auto=compress&cs=tinysrgb&w=1920",
-  "size": "1680x1118"
- },
- {
-  "dest": "assets/img/stock/pexels-13098128.jpg",
-  "status": "ok",
-  "source": "https://images.pexels.com/photos/13098128/pexels-photo-13098128.jpeg?auto=compress&cs=tinysrgb&w=1920",
-  "size": "1680x1120"
- },
- {
-  "dest": "assets/img/stock/pexels-2892618.jpg",
-  "status": "ok",
-  "source": "https://images.pexels.com/photos/2892618/pexels-photo-2892618.jpeg?auto=compress&cs=tinysrgb&w=1920",
-  "size": "1680x1120"
- },
- {
-  "dest": "assets/img/stock/pexels-7564861.jpg",
-  "status": "ok",
-  "source": "https://images.pexels.com/photos/7564861/pexels-photo-7564861.jpeg?auto=compress&cs=tinysrgb&w=1920",
-  "size": "1680x1120"
- },
- {
-  "dest": "assets/img/stock/pexels-8985455.jpg",
-  "status": "ok",
-  "source": "https://images.pexels.com/photos/8985455/pexels-photo-8985455.jpeg?auto=compress&cs=tinysrgb&w=1920",
-  "size": "1680x945"
- },
- {
-  "dest": "assets/img/stock/pexels-3855478.jpg",
-  "status": "ok",
-  "source": "https://images.pexels.com/photos/3855478/pexels-photo-3855478.jpeg?auto=compress&cs=tinysrgb&w=1920",
-  "size": "1680x2520"
- },
- {
-  "dest": "assets/img/stock/pexels-6106506.jpg",
-  "status": "ok",
-  "source": "https://images.pexels.com/photos/6106506/pexels-photo-6106506.jpeg?auto=compress&cs=tinysrgb&w=1920",
-  "size": "1680x2100"
+  "essais": 2
  },
  {
   "dest_dir": "assets/img/ftcs",
