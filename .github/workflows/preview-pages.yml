@@ -1,0 +1,44 @@
+name: Preversion GitHub Pages
+
+on:
+  push:
+    branches:
+      - claude/resume-previous-context-2u88hq
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Adapter les chemins au sous-dossier Pages
+        run: |
+          mkdir -p /tmp/site
+          rsync -a --exclude '.git' --exclude '.github' . /tmp/site/
+          find /tmp/site -name '*.html' -exec sed -i \
+            -e 's| href="/| href="/Site-ELF/|g' \
+            -e 's| src="/| src="/Site-ELF/|g' \
+            {} +
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: /tmp/site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
