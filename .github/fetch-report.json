@@ -1,25 +1,8 @@
 [
  {
-  "page": "https://tracto-technik.com/Products/GRUNDOPIT-Mini-fluid-assisted-HDD-rigs/GRUNDOPIT-KS50",
-  "error": "HTTPSConnectionPool(host='tracto-technik.com', port=443): Max retries exceeded with url: /Products/GRUNDOPIT-Mini-fluid-assisted-HDD-rigs/GRUNDOPIT-KS50 (Caused by ConnectTimeoutError(<HTTPSConnection(host='tracto-technik.com', port=443) at 0x7f01101468a0>, 'Connection to tracto-technik.com timed out. (connect timeout=40)'))"
- },
- {
-  "page": "https://www.tracto-technik.com/Products/GRUNDOPIT-Mini-fluid-assisted-HDD-rigs",
-  "error": "HTTPSConnectionPool(host='www.tracto-technik.com', port=443): Max retries exceeded with url: /Products/GRUNDOPIT-Mini-fluid-assisted-HDD-rigs (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.tracto-technik.com', port=443) at 0x7f0110146450>, 'Connection to www.tracto-technik.com timed out. (connect timeout=40)'))"
- },
- {
   "dest": "assets/img/machines/tracto-grundopit-ks50.jpg",
-  "status": "echec",
-  "essais": 69
- },
- {
-  "page": "https://tracto.com/uk/Products/GRUNDOBURST-Static-pipe-bursting-systems/",
-  "error": "404 Client Error: Not Found for url: https://tracto.com/uk/Products/GRUNDOBURST-Static-pipe-bursting-systems/"
- },
- {
-  "dest": "assets/img/machines/tracto-grundoburst-800g.jpg",
   "status": "ok",
-  "source": "https://www.tttechnologies.com/wp-content/uploads/2015/09/hotspot-grundoburst.jpg",
-  "size": "666x360"
+  "source": "https://www.tttechnologies.com/wp-content/uploads/2025/10/Photo-2-Grundopit-in-action-640x630.jpg",
+  "size": "640x630"
  }
 ]
