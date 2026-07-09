@@ -138,6 +138,13 @@
   /* ---------- formulaire de contact (composition d email) ---------- */
   var form = document.getElementById('contact-form');
   if (form) {
+    var wanted = new URLSearchParams(location.search).get('materiel');
+    if (wanted) {
+      var msg = form.elements.message;
+      if (msg && !msg.value) msg.value = 'Machine souhaitée : ' + wanted + '\n\n';
+      var sel = form.elements.sujet;
+      if (sel) sel.value = wanted === 'maintenance' ? 'de maintenance' : 'de location';
+    }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var get = function (name) {

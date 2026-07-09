@@ -912,6 +912,149 @@ label.field { display: grid; gap: 8px; font-size: 0.9rem; font-weight: 500; colo
 .legal-content h2 { font-size: 1.5rem; margin-top: 2.2em; }
 .legal-content p, .legal-content li { color: var(--ink-2); }
 
+/* ---------- visite 3D du parc ---------- */
+.p3d-body { background: #04100b; }
+.p3d-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px clamp(18px, 3vw, 34px);
+  pointer-events: none;
+}
+.p3d-header .brand, .p3d-header .btn { pointer-events: auto; }
+#p3d-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
+#p3d-canvas canvas { display: block; width: 100%; height: 100%; }
+#p3d-spacer { height: 1200vh; }
+#p3d-hint {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 20px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: rgba(4, 13, 8, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--ink-2);
+  font-size: 0.9rem;
+  transition: opacity 0.6s, transform 0.6s;
+}
+#p3d-hint span { color: var(--brand); animation: cue-b 1.6s ease-in-out infinite; }
+@keyframes cue-b { 50% { transform: translateY(4px); } }
+#p3d-hint.is-gone { opacity: 0; transform: translate(-50%, 14px); pointer-events: none; }
+#p3d-panel {
+  position: fixed;
+  left: clamp(18px, 3vw, 40px);
+  bottom: clamp(18px, 4vh, 44px);
+  z-index: 30;
+  width: min(420px, calc(100vw - 36px));
+  padding: 24px 26px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: rgba(5, 18, 12, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  opacity: 0;
+  pointer-events: none;
+}
+#p3d-panel .kicker { margin-bottom: 8px; font-size: 0.72rem; }
+#p3d-panel h2 { font-size: 1.45rem; margin-bottom: 8px; }
+#p3d-panel p { color: var(--ink-2); font-size: 0.93rem; margin-bottom: 12px; }
+#p3d-panel ul {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-size: 0.88rem;
+  color: var(--ink-2);
+}
+#p3d-panel ul li::before {
+  content: '';
+  display: inline-block;
+  width: 7px; height: 7px;
+  margin-right: 10px;
+  border-radius: 2px;
+  background: var(--brand);
+}
+#p3d-panel .p3d-ctas { display: flex; gap: 10px; flex-wrap: wrap; margin: 0; }
+.p3d-rail {
+  position: fixed;
+  right: clamp(14px, 2.4vw, 30px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.p3d-dot {
+  position: relative;
+  width: 12px; height: 12px;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: rgba(151, 255, 193, 0.08);
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+}
+.p3d-dot:hover { border-color: var(--brand); transform: scale(1.25); }
+.p3d-dot.is-active { background: var(--brand); border-color: var(--brand); box-shadow: 0 0 12px var(--glow); }
+.p3d-dot span {
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  color: var(--ink-2);
+  background: rgba(4, 13, 8, 0.85);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.p3d-dot:hover span, .p3d-dot:focus-visible span { opacity: 1; }
+.p3d-data { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.p3d-nowebgl .p3d-data, .p3d-noscript {
+  position: static;
+  width: auto; height: auto;
+  overflow: visible;
+  clip-path: none;
+  padding: 140px 24px 60px;
+  max-width: 760px;
+  margin-inline: auto;
+  display: grid;
+  gap: 40px;
+}
+.p3d-nowebgl #p3d-spacer, .p3d-nowebgl #p3d-hint, .p3d-nowebgl .p3d-rail { display: none; }
+@media (max-width: 760px) {
+  #p3d-panel {
+    left: 12px; right: 12px; bottom: 12px;
+    width: auto;
+    padding: 18px;
+  }
+  #p3d-panel h2 { font-size: 1.2rem; }
+  #p3d-panel p { display: none; }
+  .p3d-rail { display: none; }
+}
+
 /* ---------- animations d apparition ---------- */
 .reveal {
   opacity: 0;
