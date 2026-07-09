@@ -99,6 +99,44 @@ def save_optimized(data, dest, min_w=650):
     return True, f"{im.size[0]}x{im.size[1]}"
 
 
+def handle_pdf(entry):
+    """Extrait la plus grande photo d un PDF (brochure constructeur)."""
+    import fitz  # pymupdf
+    dest = entry["dest"]
+    if Path(dest).exists() and not entry.get("force"):
+        report.append({"dest": dest, "status": "deja present"})
+        return
+    for url in entry.get("pdfs", []):
+        try:
+            data = fetch(url, timeout=60, binary=True)
+        except Exception as e:
+            report.append({"pdf": url, "error": str(e)[:120]})
+            continue
+        try:
+            doc = fitz.open(stream=data, filetype="pdf")
+        except Exception:
+            continue
+        best, best_area = None, 0
+        for page in doc:
+            for info in page.get_images(full=True):
+                xref = info[0]
+                pix = doc.extract_image(xref)
+                w, h = pix.get("width", 0), pix.get("height", 0)
+                if w < entry.get("min_w", 650) or h < 350:
+                    continue
+                ratio = w / h
+                if not 0.45 <= ratio <= 3.2:
+                    continue
+                if w * h > best_area:
+                    best, best_area = pix["image"], w * h
+        if best:
+            ok, size = save_optimized(best, dest, entry.get("min_w", 650))
+            if ok:
+                report.append({"dest": dest, "status": "ok", "source": url, "size": size})
+                return
+    report.append({"dest": dest, "status": "echec pdf"})
+
+
 def handle_single(entry):
     dest = entry["dest"]
     if Path(dest).exists() and not entry.get("force"):
@@ -160,6 +198,8 @@ def main(manifest_path):
         try:
             if "dest_dir" in entry:
                 handle_bulk(entry)
+            elif "pdfs" in entry:
+                handle_pdf(entry)
             else:
                 handle_single(entry)
         except Exception as e:

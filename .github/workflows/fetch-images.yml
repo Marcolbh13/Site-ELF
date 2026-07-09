@@ -30,7 +30,7 @@ jobs:
           python-version: '3.12'
 
       - name: Installer les dependances
-        run: pip install requests pillow
+        run: pip install requests pillow pymupdf
 
       - name: Telecharger les images du manifeste
         run: python .github/scripts/fetch_images.py .github/fetch-manifest.json

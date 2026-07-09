@@ -1,9 +1,5 @@
 [
   { "dest": "assets/img/machines/tracto-jcs130.jpg", "force": true,
-    "pages": ["https://www.trenchless-works.com/advanced-trenchless-solutions-for-modern-infrastructures/",
-              "https://utilitymagazine.com.au/the-future-of-drilling-grundodrill-first-edition/",
-              "https://www.trenchless-works.com/horizontal-directional-drilling-50-years-on/"],
-    "match": "grundodrill",
-    "exclude": ["still", "logo", "teaser"],
-    "min_w": 600 }
+    "pdfs": ["https://en.tracto.com/Brand%20Portal/Products/GRUNDODRILL-NEW-GENERATION/Marketing-Material/JCS130/TRACTO_GRUNDODRILL-JCS-ACS130_EN.pdf"],
+    "min_w": 700 }
 ]
