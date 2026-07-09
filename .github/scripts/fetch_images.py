@@ -29,6 +29,11 @@ report = []
 
 def fetch(url, timeout=40, binary=False):
     r = requests.get(url, headers=HEADERS, timeout=timeout, allow_redirects=True)
+    if r.status_code >= 500:
+        alt = dict(HEADERS)
+        alt["User-Agent"] = ("Mozilla/5.0 (compatible; Googlebot/2.1; "
+                             "+http://www.google.com/bot.html)")
+        r = requests.get(url, headers=alt, timeout=timeout, allow_redirects=True)
     r.raise_for_status()
     return r.content if binary else r.text
 
@@ -54,6 +59,8 @@ def candidates_from_page(url):
         if parts:
             urls.append(parts[-1])
     urls += re.findall(r'<img[^>]+(?:data-src|src)=["\']([^"\']+)["\']', html, re.I)
+    urls += re.findall(r'background(?:-image)?\s*:[^;"\'}]*url\(["\']?([^"\')]+)["\']?\)', html, re.I)
+    urls += re.findall(r'https?://[^"\'\s\\)>]+/(?:wp-content|app)/uploads/[^"\'\s\\)>]+\.(?:jpe?g|png|webp)', html, re.I)
     seen, out = set(), []
     for u in urls:
         u = urljoin(url, u.strip())
@@ -102,10 +109,16 @@ def handle_single(entry):
         urls.append(entry["url"])
     for page in entry.get("pages", []):
         urls += candidates_from_page(page)
+    exclude = [e.lower() for e in entry.get("exclude", [])]
+    if exclude:
+        urls = [u for u in urls if not any(e in u.lower() for e in exclude)]
     match = entry.get("match")
     if match:
         preferred = [u for u in urls if match.lower() in u.lower()]
-        urls = preferred + [u for u in urls if u not in preferred]
+        if entry.get("require_match"):
+            urls = preferred
+        else:
+            urls = preferred + [u for u in urls if u not in preferred]
     for u in urls[:14]:
         try:
             data = fetch(u, binary=True)
