@@ -100,10 +100,15 @@ def save_optimized(data, dest, min_w=650):
 
 
 def handle_pdf(entry):
-    """Extrait la plus grande photo d un PDF (brochure constructeur)."""
+    """Extrait les photos d un PDF (brochure constructeur).
+
+    Avec "dest": garde la plus grande. Avec "dest_dir": exporte les
+    max_n plus grandes pour choix manuel.
+    """
     import fitz  # pymupdf
-    dest = entry["dest"]
-    if Path(dest).exists() and not entry.get("force"):
+    dest = entry.get("dest")
+    dest_dir = entry.get("dest_dir")
+    if dest and Path(dest).exists() and not entry.get("force"):
         report.append({"dest": dest, "status": "deja present"})
         return
     for url in entry.get("pdfs", []):
@@ -116,25 +121,39 @@ def handle_pdf(entry):
             doc = fitz.open(stream=data, filetype="pdf")
         except Exception:
             continue
-        best, best_area = None, 0
+        candidates = []
+        seen_xref = set()
         for page in doc:
             for info in page.get_images(full=True):
                 xref = info[0]
+                if xref in seen_xref:
+                    continue
+                seen_xref.add(xref)
                 pix = doc.extract_image(xref)
                 w, h = pix.get("width", 0), pix.get("height", 0)
                 if w < entry.get("min_w", 650) or h < 350:
                     continue
-                ratio = w / h
-                if not 0.45 <= ratio <= 3.2:
+                if not 0.45 <= w / h <= 3.2:
                     continue
-                if w * h > best_area:
-                    best, best_area = pix["image"], w * h
-        if best:
-            ok, size = save_optimized(best, dest, entry.get("min_w", 650))
-            if ok:
-                report.append({"dest": dest, "status": "ok", "source": url, "size": size})
-                return
-    report.append({"dest": dest, "status": "echec pdf"})
+                candidates.append((w * h, pix["image"]))
+        candidates.sort(key=lambda c: -c[0])
+        if not candidates:
+            continue
+        if dest_dir:
+            got = 0
+            for i, (_, img) in enumerate(candidates[: entry.get("max_n", 8)]):
+                d = str(Path(dest_dir) / f"pdf-{i:02d}.jpg")
+                ok, size = save_optimized(img, d, entry.get("min_w", 650))
+                if ok:
+                    got += 1
+                    report.append({"dest": d, "status": "ok", "source": url, "size": size})
+            report.append({"dest_dir": dest_dir, "recoltees": got})
+            return
+        ok, size = save_optimized(candidates[0][1], dest, entry.get("min_w", 650))
+        if ok:
+            report.append({"dest": dest, "status": "ok", "source": url, "size": size})
+            return
+    report.append({"dest": dest or dest_dir, "status": "echec pdf"})
 
 
 def handle_single(entry):
@@ -196,10 +215,10 @@ def main(manifest_path):
     entries = json.loads(Path(manifest_path).read_text())
     for entry in entries:
         try:
-            if "dest_dir" in entry:
-                handle_bulk(entry)
-            elif "pdfs" in entry:
+            if "pdfs" in entry:
                 handle_pdf(entry)
+            elif "dest_dir" in entry:
+                handle_bulk(entry)
             else:
                 handle_single(entry)
         except Exception as e:

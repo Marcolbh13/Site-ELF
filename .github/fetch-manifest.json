@@ -1,5 +1,6 @@
 [
-  { "dest": "assets/img/machines/tracto-jcs130.jpg", "force": true,
+  { "dest_dir": "assets/img/jcs130-pdf",
     "pdfs": ["https://en.tracto.com/Brand%20Portal/Products/GRUNDODRILL-NEW-GENERATION/Marketing-Material/JCS130/TRACTO_GRUNDODRILL-JCS-ACS130_EN.pdf"],
-    "min_w": 700 }
+    "max_n": 10,
+    "min_w": 600 }
 ]
