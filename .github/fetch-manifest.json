@@ -1,72 +1,14 @@
 [
-  { "dest": "assets/img/machines/tracto-jcs130.jpg",
-    "pages": ["https://grundodrill.com/firstedition/",
-              "https://utilitymagazine.com.au/the-future-of-drilling-grundodrill-first-edition/",
-              "https://insider.tracto.com/en/Edition-1/GRUNDODRILL-LIMITED-JCS-ACS-130-FIRST-EDITION",
-              "https://tracto.com/uk/products/grundodrill-jcs130"],
-    "match": "grundodrill" },
-
-  { "dest": "assets/img/machines/tracto-acs130.jpg",
-    "pages": ["https://www.trenchless-works.com/setting-new-standards-for-hdd-rock-drilling/",
-              "https://tracto.com/uk/products/grundodrill-acs130",
-              "https://www.trenchless-works.com/tracto-grundodrill-20acs/"],
-    "match": "grundodrill" },
-
   { "dest": "assets/img/machines/tracto-grundopit-ks50.jpg",
-    "pages": ["https://tracto.com/uk/products/grundopit-ks50",
-              "https://tracto.com/uk/products/grundopit",
-              "https://www.tttechnologies.com/products/keyhole-drilling/grundopit/"],
+    "pages": ["https://www.tttechnologies.com/tt-technologies-introduces-updated-grundopit/",
+              "https://tracto-technik.com/Products/GRUNDOPIT-Mini-fluid-assisted-HDD-rigs/GRUNDOPIT-KS50",
+              "https://www.tracto-technik.com/Products/GRUNDOPIT-Mini-fluid-assisted-HDD-rigs",
+              "https://www.trenchless-works.com/compact-grundopit-ps40-solution-for-hdd/"],
     "match": "grundopit" },
 
-  { "dest": "assets/img/machines/tracto-grundomat.jpg",
-    "pages": ["https://tractotechnik.com.au/grundomat-new-generation/",
-              "https://tracto.com/uk/products/grundomat",
-              "https://www.bauma-gmbh.com/en/newmachines/tracto-technik/grundomat.html"],
-    "match": "grundomat" },
-
   { "dest": "assets/img/machines/tracto-grundoburst-800g.jpg",
-    "pages": ["https://tracto.com/uk/products/grundoburst-800g",
-              "https://www.tttechnologies.com/products/pipe-bursting/grundoburst/",
-              "https://tractotechnik.com.au/grundoburst/"],
-    "match": "grundoburst" },
-
-  { "dest": "assets/img/machines/vermeer-d10x15.jpg", "force": true,
-    "pages": ["https://www.vermeer.com/na/utility-directional-drills/d10x15-s3",
-              "https://www.vermeer-benelux.com/en/hdd-drilling/horizontal-directional-drills/d10x15-s3/"],
-    "match": "d10x15", "require_match": true },
-
-  { "dest": "assets/img/machines/vermeer-d23x30.jpg", "force": true,
-    "pages": ["https://www.vermeer.com/em/directional-drills/d23x30-s3",
-              "https://www.vermeer-benelux.com/en/hdd-drilling/horizontal-directional-drills/d23x30-s3/"],
-    "match": "d23x30", "require_match": true },
-
-  { "dest": "assets/img/machines/vermeer-d24x40.jpg", "force": true,
-    "pages": ["https://www.vermeer.com/em/directional-drills/d24x40-s3",
-              "https://www.vermeer-benelux.com/en/hdd-drilling/horizontal-directional-drills/d24/"],
-    "match": "d24", "require_match": true },
-
-  { "dest_dir": "assets/img/kubota-kx019",
-    "pages": ["https://kbm.kubota-eu.com/constructionmachinery/en/products/kx019-4/",
-              "https://ke.kubota-eu.com/constructionmachinery/products/kx019-4/"],
-    "max_n": 6, "min_w": 700 },
-
-  { "dest_dir": "assets/img/kubota-kx060",
-    "pages": ["https://kbm.kubota-eu.com/constructionmachinery/en/products/kx060-5/",
-              "https://kuk.kubota-eu.com/constructionmachinery/products/kx060-5-2/"],
-    "max_n": 6, "min_w": 700 },
-
-  { "dest": "assets/img/chantier-forage.jpg",
-    "pages": ["https://ftcs-forage.com/",
-              "https://www.ftcs-forage.com/nos-activites/forage-dirige/"],
-    "min_w": 800 },
-
-  { "dest_dir": "assets/img/ftcs",
-    "pages": ["https://ftcs-forage.com/",
-              "https://www.ftcs-forage.com/nos-activites/forage-dirige/",
-              "https://www.ftcs-forage.com/nos-activites/travaux-speciaux/",
-              "https://www.ftcs-forage.com/entreprise-ses-valeurs/nos-valeurs/",
-              "https://www.ftcs-forage.com/nos-activites/forage-tariere/",
-              "https://www.ftcs-forage.com/entreprise-ses-valeurs/notre-histoire/"],
-    "max_n": 12,
-    "min_w": 700 }
+    "pages": ["https://www.tttechnologies.com/products/grundoburst-static-pipe-bursting-system/",
+              "https://www.trenchless-works.com/tracto-grundoburst-drives-pipe-bursting-revival-under-amp8/",
+              "https://tracto.com/uk/Products/GRUNDOBURST-Static-pipe-bursting-systems/"],
+    "match": "grundoburst" }
 ]

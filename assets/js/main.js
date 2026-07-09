@@ -32,6 +32,13 @@
         burger.setAttribute('aria-expanded', 'false');
       });
     });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && document.body.classList.contains('nav-open')) {
+        document.body.classList.remove('nav-open');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.focus();
+      }
+    });
   }
 
   /* ---------- apparitions au scroll ---------- */
@@ -109,12 +116,19 @@
       m.classList.toggle('is-filtered-out', !show);
     });
   }
-  if (filterBtns.length && location.hash) {
+  function applyFilterFromHash(scroll) {
+    if (!filterBtns.length || !location.hash) return;
     var wanted = location.hash.slice(1);
     filterBtns.forEach(function (b) {
-      if (b.getAttribute('data-filter') === wanted) applyFilter(wanted);
+      if (b.getAttribute('data-filter') === wanted) {
+        applyFilter(wanted);
+        var parc = document.getElementById('parc');
+        if (scroll && parc) parc.scrollIntoView();
+      }
     });
   }
+  applyFilterFromHash(false);
+  window.addEventListener('hashchange', function () { applyFilterFromHash(true); });
   filterBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
       applyFilter(btn.getAttribute('data-filter'));
@@ -133,9 +147,9 @@
       var sujet = 'Demande ' + (get('sujet') || 'de contact') + ' : ' + (get('societe') || get('nom'));
       var corps = [
         'Nom : ' + get('nom'),
-        'Societe : ' + get('societe'),
+        'Société : ' + get('societe'),
         'Email : ' + get('email'),
-        'Telephone : ' + get('tel'),
+        'Téléphone : ' + get('tel'),
         'Objet : ' + get('sujet'),
         '',
         get('message')

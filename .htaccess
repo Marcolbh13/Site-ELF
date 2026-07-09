@@ -1,9 +1,8 @@
 # ELF Environnement : configuration Apache pour hebergement mutualise OVH
 
-# Redirection HTTPS et www
+# Redirection unique vers https://www (adapter le domaine si besoin)
 RewriteEngine On
-RewriteCond %{HTTPS} !=on
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} ^elf-environnement\.fr$ [NC]
 RewriteRule ^(.*)$ https://www.elf-environnement.fr/$1 [L,R=301]
 
@@ -13,11 +12,16 @@ ErrorDocument 404 /404.html
 # Encodage
 AddDefaultCharset UTF-8
 
-# Compression
+# Types MIME
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+</IfModule>
+
+# Compression (le woff2 est deja compresse)
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
   AddOutputFilterByType DEFLATE application/javascript application/json
-  AddOutputFilterByType DEFLATE image/svg+xml font/woff2
+  AddOutputFilterByType DEFLATE image/svg+xml
 </IfModule>
 
 # Mise en cache navigateur
