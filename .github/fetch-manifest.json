@@ -1,9 +1,9 @@
 [
-  { "dest": "assets/img/machines/tracto-grundopit-ks50.jpg",
-    "pages": ["https://www.tttechnologies.com/tt-technologies-introduces-updated-grundopit/",
-              "https://www.tttechnologies.com/new-trenchless-keyhole-mini-directional-drill-tt-technologies/",
-              "https://www.forconstructionpros.com/equipment/underground/product/12173709/tt-technologies-tt-technologies-grundopitk-minidirectional-drill",
-              "https://www.trenchless-works.com/compact-grundopit-ps40-solution-for-hdd/"],
-    "match": "grundopit",
-    "min_w": 480 }
+  { "dest": "assets/img/machines/tracto-jcs130.jpg", "force": true,
+    "pages": ["https://www.trenchless-works.com/advanced-trenchless-solutions-for-modern-infrastructures/",
+              "https://utilitymagazine.com.au/the-future-of-drilling-grundodrill-first-edition/",
+              "https://www.trenchless-works.com/horizontal-directional-drilling-50-years-on/"],
+    "match": "grundodrill",
+    "exclude": ["still", "logo", "teaser"],
+    "min_w": 600 }
 ]
