@@ -185,6 +185,21 @@
     });
   }
 
+  /* ---------- rail de la visite du parc ---------- */
+  var railLinks = document.querySelectorAll('.visite-rail a');
+  var stations = document.querySelectorAll('.visite-station');
+  if (railLinks.length && stations.length && 'IntersectionObserver' in window) {
+    var sio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        railLinks.forEach(function (a) {
+          a.classList.toggle('is-active', a.getAttribute('href') === '#' + entry.target.id);
+        });
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    stations.forEach(function (s) { sio.observe(s); });
+  }
+
   /* ---------- annee courante ---------- */
   document.querySelectorAll('[data-year]').forEach(function (el) {
     el.textContent = new Date().getFullYear();
