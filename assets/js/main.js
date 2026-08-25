@@ -141,7 +141,11 @@
     var wanted = new URLSearchParams(location.search).get('materiel');
     if (wanted) {
       var msg = form.elements.message;
-      if (msg && !msg.value) msg.value = 'Machine souhaitée : ' + wanted + '\n\n';
+      if (msg && !msg.value) {
+        msg.value = (wanted === 'maintenance'
+          ? 'Demande d’entretien ou de réparation.'
+          : 'Machine souhaitée : ' + wanted) + '\n\n';
+      }
       var sel = form.elements.sujet;
       if (sel) sel.value = wanted === 'maintenance' ? 'de maintenance' : 'de location';
     }
@@ -151,13 +155,21 @@
         var f = form.elements[name];
         return f ? f.value.trim() : '';
       };
-      var sujet = 'Demande ' + (get('sujet') || 'de contact') + ' : ' + (get('societe') || get('nom'));
+      var objets = {
+        'de location': 'Location',
+        'de maintenance': 'Maintenance',
+        'de conseil électrique': 'Conseil électrique',
+        'autre': 'Autre demande'
+      };
+      var sujetVal = get('sujet') || 'de contact';
+      var sujet = (sujetVal === 'autre' ? 'Autre demande' : 'Demande ' + sujetVal) +
+        ' : ' + (get('societe') || get('nom'));
       var corps = [
         'Nom : ' + get('nom'),
         'Société : ' + get('societe'),
         'Email : ' + get('email'),
         'Téléphone : ' + get('tel'),
-        'Objet : ' + get('sujet'),
+        'Objet : ' + (objets[sujetVal] || sujetVal),
         '',
         get('message')
       ].join('\n');
@@ -168,7 +180,7 @@
       var note = document.getElementById('form-note');
       if (note) {
         note.hidden = false;
-        note.textContent = 'Votre logiciel de messagerie va s’ouvrir avec votre demande. Vous pouvez aussi nous joindre directement par téléphone.';
+        note.textContent = 'Votre logiciel de messagerie va s’ouvrir avec votre demande. Si rien ne s’ouvre, écrivez-nous à ' + dest + '.';
       }
     });
   }

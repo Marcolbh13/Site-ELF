@@ -28,9 +28,11 @@ jobs:
         run: |
           mkdir -p /tmp/site
           rsync -a --exclude '.git' --exclude '.github' . /tmp/site/
+          # noindex : la préversion ne doit pas être indexée à la place du futur domaine
           find /tmp/site -name '*.html' -exec sed -i \
             -e 's| href="/| href="/Site-ELF/|g' \
             -e 's| src="/| src="/Site-ELF/|g' \
+            -e 's|content="index, follow"|content="noindex, nofollow"|g' \
             {} +
       - uses: actions/configure-pages@v5
         with:
