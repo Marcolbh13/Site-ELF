@@ -18,19 +18,23 @@
 
 :root {
   --bg: #ffffff;
-  --bg-soft: #f6f9f7;
-  --bg-green: #eaf4ee;
-  --bg-blue: #ecf3f9;
+  --bg-soft: #f4f8f6;
+  --bg-green: #e7f4ec;
+  --bg-blue: #e9f2f9;
   --panel-solid: #ffffff;
-  --ink: #1c2a22;
-  --ink-2: #48584e;
-  --ink-3: #5f6d64;
+  --petrol: #0b2733;
+  --petrol-2: #0e3242;
+  --mint: #43d98a;
+  --sky: #63b6f0;
+  --ink: #16262d;
+  --ink-2: #44555c;
+  --ink-3: #5d6d70;
   --brand: #1e7a46;
   --brand-deep: #14532f;
-  --blue: #22629e;
-  --blue-deep: #194a78;
-  --line: #e2e8e3;
-  --line-strong: #ccd6cf;
+  --blue: #1f66a8;
+  --blue-deep: #174e82;
+  --line: #e1e8e6;
+  --line-strong: #c9d5d3;
   --font-display: 'Space Grotesk', 'Trebuchet MS', sans-serif;
   --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
   --wrap: 1180px;
@@ -1079,4 +1083,309 @@ ul { padding-left: 1.2em; }
   .form-row { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .proof-band .wrap { justify-content: flex-start; }
+}
+
+
+/* ============================================================
+   v3 — pré-header, bandeau annonce, hero recherche, univers
+   ============================================================ */
+
+/* ---------- bandeau annonce (pattern Electra) ---------- */
+.annonce {
+  background: var(--petrol);
+  color: #dff3e8;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 9px 16px;
+}
+.annonce a { color: var(--mint); font-weight: 600; }
+.annonce strong { color: #fff; }
+
+/* ---------- pré-header (pattern Loxam) ---------- */
+.preheader {
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+  font-size: 0.85rem;
+}
+.preheader .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  min-height: 36px;
+}
+.preheader a { color: var(--ink-2); }
+.preheader a:hover { color: var(--blue); }
+.preheader .tel { font-weight: 700; color: var(--brand-deep); }
+
+/* ---------- hero recherche (pattern Loxam) ---------- */
+.hero-loc {
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+  background: var(--petrol);
+}
+.hero-loc .hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.38;
+}
+.hero-loc::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(11, 39, 51, 0.92) 20%, rgba(11, 39, 51, 0.45));
+}
+.hero-loc .wrap { position: relative; z-index: 2; padding-block: 84px 96px; }
+.hero-loc h1, .hero-loc p { color: #fff; }
+.hero-loc .lede { color: rgba(255, 255, 255, 0.85); }
+
+.search-card {
+  margin-top: 34px;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr auto;
+  gap: 12px;
+  align-items: end;
+  max-width: 900px;
+}
+.search-card .field { gap: 5px; font-size: 0.82rem; }
+.search-card .field input { min-height: 48px; }
+.search-card .btn { min-height: 48px; }
+
+/* ---------- cartes familles (accueil) ---------- */
+.famille-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel-solid);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: box-shadow 0.25s, transform 0.25s;
+  color: var(--ink);
+}
+.famille-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); text-decoration: none; }
+.famille-card img { aspect-ratio: 16 / 9; object-fit: cover; width: 100%; border-bottom: 1px solid var(--line); }
+.famille-card.contain img { object-fit: contain; padding: 14px; background: #fff; }
+.famille-card .famille-body { padding: 18px 20px 20px; }
+.famille-card h3 { margin-bottom: 4px; font-size: 1.05rem; }
+.famille-card p { margin: 0; font-size: 0.9rem; color: var(--ink-2); }
+.famille-card .count {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+/* ---------- sections pétrole (univers recharge) ---------- */
+.section-petrol {
+  background: linear-gradient(135deg, var(--petrol), var(--petrol-2));
+  color: #e7f2ee;
+}
+.section-petrol h2, .section-petrol h3 { color: #fff; }
+.section-petrol .lede { color: rgba(255, 255, 255, 0.82); }
+.section-petrol .kicker { color: var(--mint); }
+
+.stat-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: 24px;
+}
+.stat-display > div { border-left: 3px solid var(--mint); padding-left: 18px; }
+.stat-display.blue > div { border-left-color: var(--sky); }
+.stat-display .num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--mint);
+}
+.stat-display.blue .num { color: var(--sky); }
+.stat-display .lbl { display: block; margin-top: 6px; font-size: 0.92rem; color: rgba(255, 255, 255, 0.85); }
+.stat-display.on-light .num { color: var(--brand); }
+.stat-display.on-light > div { border-left-color: var(--brand); }
+.stat-display.on-light .lbl { color: var(--ink-2); }
+
+/* ---------- badge de statut (pattern Milence) ---------- */
+.statut {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.statut::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.statut-soon { background: rgba(99, 182, 240, 0.15); color: var(--sky); border: 1px solid rgba(99, 182, 240, 0.45); }
+.statut-open { background: rgba(67, 217, 138, 0.15); color: var(--mint); border: 1px solid rgba(67, 217, 138, 0.45); }
+.on-light .statut-soon, .statut-soon.on-light { background: var(--bg-blue); color: var(--blue-deep); border-color: rgba(31, 102, 168, 0.4); }
+
+/* ---------- tableau specs station (pattern Milence) ---------- */
+.station-specs {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.97rem;
+}
+.station-specs th, .station-specs td { padding: 13px 6px; border-bottom: 1px solid var(--line); text-align: left; }
+.station-specs th { color: var(--ink-2); font-weight: 500; width: 45%; }
+.station-specs td { font-weight: 600; color: var(--ink); }
+.section-petrol .station-specs th { color: rgba(255,255,255,0.75); }
+.section-petrol .station-specs td { color: #fff; }
+.section-petrol .station-specs th, .section-petrol .station-specs td { border-bottom-color: rgba(255,255,255,0.16); }
+
+/* ---------- points de charge (pattern Electra) ---------- */
+.points-charge { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.points-charge li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: var(--panel-solid);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-size: 0.93rem;
+}
+.points-charge .pc-etat { font-weight: 600; color: var(--blue); }
+
+/* ---------- grille tarifaire (pattern Electra x Milence) ---------- */
+.tarif-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 24px; align-items: stretch; }
+.tarif-card {
+  background: var(--panel-solid);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tarif-card.highlight { border: 2px solid var(--blue); box-shadow: var(--shadow); position: relative; }
+.tarif-card .tarif-tag {
+  position: absolute;
+  top: -13px;
+  left: 24px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 4px 14px;
+}
+.tarif-card h3 { margin-bottom: 2px; }
+.tarif-card .tarif-sub { color: var(--ink-2); font-size: 0.92rem; margin: 0; }
+.tarif-prix {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1.05;
+  margin-top: 10px;
+}
+.tarif-prix small { font-size: 0.95rem; font-weight: 500; color: var(--ink-2); }
+.tarif-card ul { list-style: none; margin: 8px 0 18px; padding: 0; display: grid; gap: 9px; }
+.tarif-card ul li { padding-left: 26px; position: relative; color: var(--ink-2); font-size: 0.94rem; }
+.tarif-card ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: var(--bg-blue) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="none" stroke="%231f66a8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M5 10.5l3.2 3.2L15 7"/></svg>') 50% 50% / 12px no-repeat;
+}
+.tarif-card .btn { margin-top: auto; }
+.tarif-note { font-size: 0.85rem; color: var(--ink-3); margin-top: 18px; }
+
+/* ---------- frise projet (pattern Milence journey) ---------- */
+.jalons { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 0; }
+.jalons li { position: relative; padding: 26px 22px 0 0; }
+.jalons li::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+}
+.jalons li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--petrol);
+  border: 3px solid var(--sky);
+}
+.jalons li.fait::after { background: var(--mint); border-color: var(--mint); }
+.jalons .jalon-t { display: block; font-family: var(--font-display); font-weight: 700; color: #fff; margin-bottom: 4px; }
+.jalons p { font-size: 0.9rem; color: rgba(255, 255, 255, 0.78); margin: 0; }
+
+/* ---------- carte implantation ---------- */
+.map-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+}
+.map-card img { width: 100%; object-fit: cover; }
+.map-card .map-legende {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  box-shadow: var(--shadow-soft);
+}
+.map-card .map-legende b { display: block; }
+
+/* ---------- badge de recharge (visuel carte) ---------- */
+.badge-elf {
+  aspect-ratio: 8 / 5;
+  max-width: 380px;
+  border-radius: 18px;
+  background: linear-gradient(130deg, var(--petrol) 30%, #14486027 130%), linear-gradient(130deg, var(--petrol), #155a3e);
+  color: #fff;
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+}
+.badge-elf .brand { color: #fff; }
+.badge-elf .brand .brand-sub { color: rgba(255, 255, 255, 0.7); }
+.badge-elf .badge-num { font-family: var(--font-display); letter-spacing: 0.18em; color: rgba(255, 255, 255, 0.85); font-size: 0.95rem; }
+.badge-elf .badge-type { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); }
+
+@media (max-width: 1024px) {
+  .search-card { grid-template-columns: 1fr 1fr; }
+  .search-card .btn { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .search-card { grid-template-columns: 1fr; padding: 14px; }
 }

@@ -6,6 +6,9 @@ RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} ^elf-environnement\.fr$ [NC]
 RewriteRule ^(.*)$ https://www.elf-environnement.fr/$1 [L,R=301]
 
+# Ancienne page groupe devenue entreprise
+Redirect 301 /groupe.html /entreprise.html
+
 # Page d erreur personnalisee
 ErrorDocument 404 /404.html
 

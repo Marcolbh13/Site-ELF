@@ -105,16 +105,29 @@
   /* ---------- formulaire de contact (composition d email) ---------- */
   var form = document.getElementById('contact-form');
   if (form) {
-    var wanted = new URLSearchParams(location.search).get('materiel');
-    if (wanted) {
+    var params = new URLSearchParams(location.search);
+    var wanted = params.get('materiel');
+    var debut = params.get('debut');
+    var fin = params.get('fin');
+    if (wanted || debut || fin) {
       var msg = form.elements.message;
       if (msg && !msg.value) {
-        msg.value = (wanted === 'maintenance'
-          ? 'Demande d’entretien ou de réparation.'
-          : 'Machine souhaitée : ' + wanted) + '\n\n';
+        var lignes = [];
+        if (wanted) {
+          lignes.push(wanted === 'maintenance'
+            ? 'Demande d’entretien ou de réparation.'
+            : 'Matériel souhaité : ' + wanted);
+        }
+        if (debut || fin) {
+          lignes.push('Chantier' + (debut ? ' du ' + debut : '') + (fin ? ' au ' + fin : ''));
+        }
+        if (lignes.length) msg.value = lignes.join('\n') + '\n\n';
       }
       var sel = form.elements.sujet;
-      if (sel) sel.value = wanted === 'maintenance' ? 'de maintenance' : 'de location';
+      if (sel && wanted) {
+        sel.value = wanted === 'maintenance' ? 'de maintenance'
+          : (/recharge|badge|flotte/i.test(wanted) ? 'de recharge' : 'de location');
+      }
     }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -126,6 +139,7 @@
         'de location': 'Location',
         'de maintenance': 'Maintenance',
         'de conseil électrique': 'Conseil électrique',
+        'de recharge': 'Recharge BTP',
         'autre': 'Autre demande'
       };
       var sujetVal = get('sujet') || 'de contact';
