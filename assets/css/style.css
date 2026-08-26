@@ -5,13 +5,13 @@
 
 @font-face {
   font-family: 'Space Grotesk';
-  src: url('/assets/fonts/spacegrotesk-500-600-700.woff2') format('woff2');
+  src: url('../fonts/spacegrotesk-500-600-700.woff2') format('woff2');
   font-weight: 500 700;
   font-display: swap;
 }
 @font-face {
   font-family: 'Inter';
-  src: url('/assets/fonts/inter-400-500-600.woff2') format('woff2');
+  src: url('../fonts/inter-400-500-600.woff2') format('woff2');
   font-weight: 400 600;
   font-display: swap;
 }
@@ -24,7 +24,7 @@
   --panel-solid: #ffffff;
   --ink: #1c2a22;
   --ink-2: #48584e;
-  --ink-3: #6f7d74;
+  --ink-3: #5f6d64;
   --brand: #1e7a46;
   --brand-deep: #14532f;
   --blue: #22629e;
@@ -637,7 +637,7 @@ ul { padding-left: 1.2em; }
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
-.filter-btn:hover { border-color: var(--brand); color: var(--brand); }
+.filter-btn:hover { border-color: var(--brand); color: var(--brand); text-decoration: none; }
 .filter-btn.is-active {
   background: var(--brand);
   border-color: var(--brand);
@@ -749,7 +749,6 @@ ul { padding-left: 1.2em; }
   color: var(--blue-deep);
 }
 
-.is-filtered-out { display: none; }
 
 /* anciennes cartes machines (accueil) */
 .machine-card {
@@ -990,17 +989,34 @@ ul { padding-left: 1.2em; }
   gap: 10px;
 }
 .visite-rail a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+.visite-rail a::before {
+  content: '';
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: var(--line-strong);
   transition: background 0.2s, transform 0.2s;
 }
-.visite-rail a:hover, .visite-rail a.is-active {
+.visite-rail a:hover::before, .visite-rail a.is-active::before {
   background: var(--brand);
   transform: scale(1.3);
 }
-.visite-rail a span { display: none; }
+.visite-rail a span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 
 /* ---------- reveal ---------- */
 .reveal {
@@ -1014,6 +1030,8 @@ ul { padding-left: 1.2em; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .marquee-track { animation: none; }
   .btn:hover, .card:hover, .machine-card:hover { transform: none; }
+  .machine-card:hover .machine-visual img { transform: none; transition: none; }
+  .site-header { transition: none; }
 }
 
 /* ---------- responsive ---------- */

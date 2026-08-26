@@ -11,7 +11,8 @@
     var y = window.scrollY;
     if (header) {
       header.classList.toggle('is-scrolled', y > 24);
-      header.classList.toggle('is-hidden', y > 420 && y > lastY);
+      header.classList.toggle('is-hidden',
+        y > 420 && y > lastY && !document.body.classList.contains('nav-open'));
     }
     lastY = y;
   }
@@ -99,40 +100,6 @@
       card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
       card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
     }, { passive: true });
-  });
-
-  /* ---------- filtres du parc materiel ---------- */
-  var filterBtns = document.querySelectorAll('[data-filter]');
-  var machines = document.querySelectorAll('[data-cat]');
-  function applyFilter(f) {
-    filterBtns.forEach(function (b) {
-      var on = b.getAttribute('data-filter') === f;
-      b.classList.toggle('is-active', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
-    machines.forEach(function (m) {
-      var cats = m.getAttribute('data-cat').split(' ');
-      var show = f === 'tout' || cats.indexOf(f) !== -1;
-      m.classList.toggle('is-filtered-out', !show);
-    });
-  }
-  function applyFilterFromHash(scroll) {
-    if (!filterBtns.length || !location.hash) return;
-    var wanted = location.hash.slice(1);
-    filterBtns.forEach(function (b) {
-      if (b.getAttribute('data-filter') === wanted) {
-        applyFilter(wanted);
-        var parc = document.getElementById('parc');
-        if (scroll && parc) parc.scrollIntoView();
-      }
-    });
-  }
-  applyFilterFromHash(false);
-  window.addEventListener('hashchange', function () { applyFilterFromHash(true); });
-  filterBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      applyFilter(btn.getAttribute('data-filter'));
-    });
   });
 
   /* ---------- formulaire de contact (composition d email) ---------- */
