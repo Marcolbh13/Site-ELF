@@ -118,8 +118,12 @@
             ? 'Demande d’entretien ou de réparation.'
             : 'Matériel souhaité : ' + wanted);
         }
+        var frDate = function (iso) {
+          var d = new Date(iso);
+          return isNaN(d) ? iso : d.toLocaleDateString('fr-FR');
+        };
         if (debut || fin) {
-          lignes.push('Chantier' + (debut ? ' du ' + debut : '') + (fin ? ' au ' + fin : ''));
+          lignes.push('Chantier' + (debut ? ' du ' + frDate(debut) : '') + (fin ? ' au ' + frDate(fin) : ''));
         }
         if (lignes.length) msg.value = lignes.join('\n') + '\n\n';
       }
