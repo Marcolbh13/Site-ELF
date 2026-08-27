@@ -8,6 +8,7 @@ RewriteRule ^(.*)$ https://www.elf-environnement.fr/$1 [L,R=301]
 
 # Ancienne page groupe devenue entreprise
 Redirect 301 /groupe.html /entreprise.html
+Redirect 301 /parc-3d.html /visite.html
 
 # Page d erreur personnalisee
 ErrorDocument 404 /404.html
