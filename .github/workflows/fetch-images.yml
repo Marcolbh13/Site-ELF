@@ -1,0 +1,48 @@
+name: Recuperation des images du site
+
+on:
+  push:
+    branches:
+      - claude/resume-previous-context-2u88hq
+    paths:
+      - '.github/fetch-manifest.json'
+      - '.github/scripts/fetch_images.py'
+      - '.github/workflows/fetch-images.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-images-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Installer les dependances
+        run: pip install requests pillow pymupdf
+
+      - name: Telecharger les images du manifeste
+        run: python .github/scripts/fetch_images.py .github/fetch-manifest.json
+
+      - name: Committer les images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A assets/img .github/fetch-report.json
+          if git diff --cached --quiet; then
+            echo "Aucune nouvelle image"
+          else
+            git commit -m "Ajout des images du materiel et des chantiers [skip ci]"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
